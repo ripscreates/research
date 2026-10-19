@@ -1,0 +1,96 @@
+/* The expedition extends the portfolio's established paper, ink, and pastel map. */
+.expedition-symbols { position:absolute; width:0; height:0; overflow:hidden; }
+#map ::selection { color:var(--ink); background:var(--lemon); }
+#map :focus-visible { outline:3px solid #267387; outline-offset:5px; }
+.expedition-controls { display:flex; justify-content:space-between; gap:1.5rem; align-items:center; margin:2.5rem 0 1rem; }
+.expedition-controls p { max-width:33ch; margin:0; line-height:1.5; }
+.expedition-controls>div { display:flex; align-items:center; gap:1.2rem; }
+.expedition-controls button,.expedition-controls a { font-family:var(--mono); font-size:.7rem; text-underline-offset:4px; }
+.expedition-controls button { min-height:44px; border:1px solid var(--ink); border-radius:0; background:var(--paper); padding:.6rem .9rem; cursor:pointer; }
+.expedition-controls button:hover { background:var(--lemon); }
+.expedition-scroll { position:relative; }
+.journey-enhanced .expedition-scroll { height:390vh; }
+.expedition-stage { position:relative; border:1px solid var(--ink); background:var(--paper); color:var(--ink); box-shadow:0 16px 28px -22px #17171666; isolation:isolate; }
+.journey-enhanced .expedition-stage { position:sticky; top:50px; }
+.expedition-topline { display:flex; justify-content:space-between; gap:1rem; align-items:center; min-height:50px; padding:1rem 1.2rem .6rem; font-family:var(--mono); font-size:.65rem; letter-spacing:.04em; }
+.expedition-frame { display:grid; grid-template-columns:minmax(0,1fr) 290px; align-items:center; min-height:380px; }
+.expedition-art { min-width:0; overflow:hidden; }
+.expedition-landscape { display:block; width:100%; height:auto; max-height:min(510px,calc(100svh - 265px)); }
+.expedition-route { fill:none; stroke:#d7ad2c; stroke-width:3; stroke-dasharray:3 12; stroke-linecap:round; }
+.scene-road .expedition-route { stroke:#ffe772; }
+.scene-space .expedition-route { stroke:#9edcf7; }
+.explored-route { fill:none; stroke:#d7ad2c; stroke-width:4; stroke-linecap:round; }
+.scene-road .explored-route { stroke:#ffe772; }
+.scene-space .explored-route { stroke:#ffe772; }
+.drawn-sign rect { fill:#005a36; stroke:#faf9f5; stroke-width:3; }
+.drawn-sign text { fill:#faf9f5; text-anchor:middle; font:16px var(--mono); }
+.drawn-sign .sign-name { font:700 19px var(--sans); }
+.drawn-sign path { fill:none; stroke:#faf9f5; stroke-width:2; }
+.map-hand { font:38px var(--pen); fill:#16473d; }
+.scene-space .map-hand { fill:#ffe772; }
+.map-label { font:13px var(--mono); fill:#16473d; letter-spacing:1px; }
+.expedition-story { padding:1.5rem 1.5rem 1.5rem .5rem; }
+.story-date { display:inline-block; margin:0 0 1.4rem; padding:.35rem .5rem; border:1px solid currentColor; font: .75rem var(--mono); }
+.expedition-story h3 { margin:0 0 1rem; max-width:12ch; font-size:clamp(1.8rem,3vw,2.65rem); line-height:.95; letter-spacing:-.04em; }
+.expedition-story>p:not(.story-date) { margin:0; font-size:1rem; line-height:1.5; }
+.story-footnote { display:block; margin-top:1.5rem; font-family:var(--pen); font-size:1.45rem; }
+.expedition-waypoints { display:none; grid-template-columns:repeat(6,minmax(0,1fr)); gap:.7rem; padding:1.2rem; }
+.journey-enhanced .expedition-waypoints { display:grid; }
+.waypoint { position:relative; min-height:95px; padding:.7rem .6rem; border:2px solid #fffdf7; outline:1px solid #005a36; border-radius:5px; background:#005a36; color:#fffdf7; cursor:pointer; text-align:left; box-shadow:0 5px 12px -8px #171716; }
+.waypoint span { display:block; width:fit-content; font: .62rem var(--mono); }
+.waypoint strong { display:block; max-width:13ch; margin-top:.6rem; font-size:.94rem; line-height:1.1; font-weight:600; }
+.waypoint[aria-pressed="true"] { color:var(--ink); background:var(--lemon); outline-color:var(--ink); }
+.waypoint:focus-visible { outline:3px solid #267387; outline-offset:4px; }
+.waypoint svg { position:absolute; z-index:2; top:-42px; right:4px; width:47px; height:47px; opacity:0; transform:translateY(10px) rotate(-15deg) scale(.65); transition:transform .28s cubic-bezier(.34,1.56,.64,1),opacity .16s ease-out; pointer-events:none; }
+.waypoint:hover svg,.waypoint:focus-visible svg,.waypoint[aria-pressed="true"] svg { opacity:1; transform:translateY(0) rotate(-8deg) scale(1); }
+#discovery-badge { opacity:0; transition:opacity .18s; pointer-events:none; }
+.expedition-stage.discovering #discovery-badge { opacity:1; }
+.expedition-progress { height:4px; background:#17171622; }
+.expedition-progress span { display:block; height:100%; background:#005a36; transform-origin:left; transform:scaleX(0); }
+.expedition-stage[data-mode="rocket"] { color:#faf9f5; background:#1c3155; }
+.expedition-stage[data-mode="rocket"] .expedition-progress span { background:#ffe772; }
+.journey-notes { margin:3rem 0 0; scroll-margin-top:60px; }
+.journey-notes h3 { margin:0; font-size:2.5rem; letter-spacing:-.04em; }
+.journey-notes>p { margin:.5rem 0 1.5rem; }
+.journey-note { border-top:1px solid var(--line); background:var(--paper); }
+.journey-note:last-child { border-bottom:1px solid var(--line); }
+.journey-note summary { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.2rem .4rem; cursor:pointer; list-style:none; font-weight:600; }
+.journey-note summary::-webkit-details-marker { display:none; }
+.journey-note summary::after { content:'+'; font:1.5rem var(--mono); }
+.journey-note[open] summary::after { content:'−'; }
+.journey-note p { max-width:68ch; margin:0; padding:0 .4rem 1.5rem; line-height:1.55; }
+.journey-still .expedition-scroll { height:auto; }
+.journey-still .expedition-stage { position:relative; top:auto; }
+.journey-still .travel-instruction { visibility:hidden; }
+@media (min-width:801px) and (min-height:780px) { .expedition-frame { min-height:440px; } }
+@media (max-width:800px) {
+ .expedition-controls { display:block; }
+ .expedition-controls>div { margin-top:.8rem; flex-wrap:wrap; gap:.9rem; }
+ .expedition-topline { min-height:40px; padding:.7rem .8rem; font-size:.58rem; }
+ .expedition-frame { grid-template-columns:1fr; min-height:0; }
+ .expedition-art { width:100%; max-width:620px; margin:0 auto; }
+ .expedition-landscape { max-height:min(300px,calc(100svh - 380px)); }
+ .expedition-story { display:grid; grid-template-columns:1fr; padding:.2rem 1.2rem .6rem; min-height:190px; align-content:start; }
+ .story-date { margin:0 0 .6rem; padding:0; border:0; font-size:.65rem; }
+ .expedition-story h3 { max-width:none; margin:0 0 .55rem; font-size:1.8rem; }
+ .expedition-story>p:not(.story-date) { font-size:.91rem; line-height:1.4; max-width:65ch; }
+ .story-footnote { margin:.5rem 0 0; font-size:1.15rem; }
+ .expedition-waypoints { gap:.45rem; padding:1rem .8rem .8rem; }
+ .waypoint { min-height:49px; padding:.4rem .2rem; text-align:center; }
+ .waypoint span { width:100%; font-size:.55rem; }
+ .waypoint strong { display:none; }
+ .waypoint svg { width:34px; height:34px; top:-31px; right:calc(50% - 17px); }
+}
+@media (max-width:420px) {
+ .travel-instruction { font-size:.52rem; }
+ .expedition-story { padding-right:.9rem; padding-left:.9rem; min-height:207px; }
+ .expedition-story h3 { font-size:1.7rem; }
+ .expedition-waypoints { padding-right:.5rem; padding-left:.5rem; gap:.35rem; }
+ .waypoint span { font-size:.56rem; }
+}
+@media (max-height:600px) { .journey-enhanced .expedition-scroll { height:auto; } .journey-enhanced .expedition-stage { position:relative; top:auto; } .travel-instruction { visibility:hidden; } }
+@media (prefers-reduced-motion:reduce) { .waypoint svg { transition:none; transform:none; } #discovery-badge { transition:none; } }
+
+.vehicle-sprite.arriving { transform-box:fill-box; transform-origin:center; animation:vehicle-arrival .35s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes vehicle-arrival { from { transform:scale(.45); } to { transform:scale(1); } }
+@media (prefers-reduced-motion:reduce) { .vehicle-sprite.arriving { animation:none; } }
